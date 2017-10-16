@@ -1,0 +1,26 @@
+﻿@model IEnumerable<AccessApp.Models.Visitors>
+
+@{
+    ViewBag.Title = "Main page";
+    WebGrid grid = new WebGrid(Model);
+    DateTime dateTime = DateTime.Now;
+}
+
+    <h2><p>
+    Выберите дату:
+    <input type="date" name="calendar" value="@dateTime" max="@dateTime">
+</h2>
+    
+
+    <div id="main" style="padding:25px; border: 4px double black; background-color:lightgrey;">
+    
+    @grid.GetHtml(htmlAttributes: new { id = "gridT", width = "1000px", height = "1000px" },
+    columns: new[]
+    {
+    grid.Column("Id"),
+    grid.Column("DateTime"),
+    //grid.Column("Message"),
+    grid.Column("Card"),
+    grid.Column("CardHolderName")
+})
+
